@@ -20,6 +20,7 @@ export const loadShoppingListItems = createAsyncThunk(
   async (householdId, { rejectWithValue }) => {
     try {
       const data = await fetchShoppingListItems(householdId);
+      console.log('data:', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
@@ -67,6 +68,7 @@ const shoppingListsSlice = createSlice({
       .addCase(loadShoppingListItems.fulfilled, (state, action) => {
         state.loading = false;
         state.selectedListItems = action.payload;
+        console.log('selectedListItems:', action.payload);
       })
       .addCase(loadShoppingListItems.rejected, (state, action) => {
         state.loading = false;

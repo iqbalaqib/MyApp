@@ -65,7 +65,7 @@ export const fetchShoppingLists = async () => {
  */
 export const fetchShoppingListItems = async (householdId) => {
   try {
-    const response = await apiClient.get(`/households/${householdId}/items`);
+    const response = await apiClient.get(`/households/${householdId}/current`);
     return response.data;
   } catch (error) {
     handleGroshApiError(error);
